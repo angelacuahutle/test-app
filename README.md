@@ -1,33 +1,19 @@
 # README
+## The excersise consist on creating a single page application 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# ROADMAP
 
-Things you may want to cover:
+* Install mysql
+* Add Tailwind
+* Write Capybara test
+* Install and setup rails rspec
+* Generate teacher model using scaffold
+* Write controller
+* Finishes and tailwind design 
+* Deploy 
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-## Roadmap
-
-#### Technology and gems 
-
-##### The exercise consists of writing a Ruby on Rails application.
+#### Language, frameworks and databases used 
 
 - Rails 7..2
 - Ruby 3.1.0
@@ -35,6 +21,17 @@ Things you may want to cover:
 - Tailwind
 - slim view templates
 - The table must be done using Hotwire/Stimulus/TurboFrame, on the front end, without having to go back to the server to refresh the screen, or using any JS libraries (such as datatables).
+
+# ROADMAP
+
+- Install mysql
+- Add Tailwind
+- Install and setup rails rspec
+- Write Capybara test
+- Generate teacher model using scaffold
+- Write controller
+- Finishes and tailwind design 
+- Deploy 
 
 ## TEST DRAFT
 
