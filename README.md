@@ -34,17 +34,56 @@ Things you may want to cover:
 - mysql 8
 - Tailwind
 - slim view templates
-
-
-- A single page application
-- Displaying in its landing page (home page), a table with the following columns:
-Teacher                School                   School Year
-- Table is centered horizontally in the home page. 
-- Column heads row is blue background with white font.
-- Cells have blue borders and light gray background.
-- Default # of rows is 25.
-- Below the table, you have pagination.
-- Each table head column is clickable (with an up/down arrow showing next to it) to 
-- Change the sort direction, based on that column.
 - The table must be done using Hotwire/Stimulus/TurboFrame, on the front end, without having to go back to the server to refresh the screen, or using any JS libraries (such as datatables).
+
+## TEST DRAFT
+
+Unit 
+- Model Teacher
+  validates presence 
+    name
+    school
+    year
+- A single page application
+  request 
+  teacher#index
+  @teachers = Teachers.all
+
+  forms
+  Add Teacher, school and school year  
+
+System 
+  teacher#static
+    it shows an html idt: table that horizontaly has 3 columns
+      it shows teacher's name
+      it shows teacher's school  
+      it shows teacher's school year
+  Column heads row is blue background with white font.
+  Cells have blue borders and light gray background.
+  Default # of rows is 25.
+  
+  Below the table, you have pagination.
+    describe "index" do
+      context "on table rows" do
+        it "has not second page" do
+          visit root_path
+          expect(page).to have_no_xpath("//*[@class='pagination']//a[text()='2']")
+        end
+      end 
+
+      context 'each table head column is clickable (with an up/down arrow showing next to it)' do 
+     
+      Change the sort direction based on the column.
+    
+Featur
+
 - Add a search box.
+it "narrows results for a teacher, school or year using the search box" do
+  teacher1 = Teacher.create!(teacher_attributes(name: "José"))
+
+
+  fill_in :search, with: "José"
+  click_button 'Search'
+
+  expect(page).to have_text(teacher.name)
+end
