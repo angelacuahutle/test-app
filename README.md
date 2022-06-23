@@ -44,46 +44,48 @@ Unit
     name
     school
     year
-- A single page application
-  request 
+Controller
   teacher#index
   @teachers = Teachers.all
+System
+  visit root_path # teachers#index
+  it is_expected.to have_css('#create_teacher') # add params
+  it shows an html id: table that horizontally has 3 columns
+    expect table header to contain 3 th
+  it is_expected to find('th#name')
+  it is_expected to find('th#school')
+  it is_expected to find('th#year')
+  it is_expected to find('th.blue-bg.font-white')
+  it is_expected to find('td.border-blue.gray-bg.font-white')
+  it is_expected to have 25 tds
+  it 'has pagination' do
+    expect(page).to have_css('nav#pagination')
+  end
 
-  forms
-  Add Teacher, school and school year  
+  context "when using table rows" do
+    it "has second page" do
+      visit root_path
+      expect(page).to have_xpath("//*[@class='pagination']//a[text()='2']")
+    end
 
-System 
-  teacher#static
-    it shows an html idt: table that horizontaly has 3 columns
-      it shows teacher's name
-      it shows teacher's school  
-      it shows teacher's school year
-  Column heads row is blue background with white font.
-  Cells have blue borders and light gray background.
-  Default # of rows is 25.
-  
-  Below the table, you have pagination.
-    describe "index" do
-      context "on table rows" do
-        it "has not second page" do
-          visit root_path
-          expect(page).to have_no_xpath("//*[@class='pagination']//a[text()='2']")
-        end
-      end 
+    it 'sorts strings' do
+      find('th#sort_by', first).click # find name column
+      expect('td.name').to sort_record
+    end
 
-      context 'each table head column is clickable (with an up/down arrow showing next to it)' do 
-     
-      Change the sort direction based on the column.
-    
-Featur
+    it 'sorts datetime' do
+      find('th#sort_by', third).click # find name column
+      expect('td.year').to sort_record
+    end
+  end 
 
-- Add a search box.
-it "narrows results for a teacher, school or year using the search box" do
-  teacher1 = Teacher.create!(teacher_attributes(name: "José"))
-
-
-  fill_in :search, with: "José"
-  click_button 'Search'
-
-  expect(page).to have_text(teacher.name)
-end
+  context 'when searching' do
+    let(:sample_teacher) FactoryBot.create(:teacher, name: 'Sample Teacher')
+    it 'has a search box for names, schools and years' do
+      within #search-box
+        fill_in :search, with: 'Sample Teacher'
+        click_button 'Search'
+      end
+      expect(page).to have_css('.query-result')
+    end
+  end
