@@ -18,9 +18,11 @@
 - Rails 7..2
 - Ruby 3.1.0
 - mysql 8
+- Rspec 
+- Capybara
 - Tailwind
 - slim view templates
-- The table must be done using Hotwire/Stimulus/TurboFrame, on the front end, without having to go back to the server to refresh the screen, or using any JS libraries (such as datatables).
+- Hotwire/Stimulus/TurboFrame, on the front end, without having to go back to the server to refresh the screen, or using any JS libraries (such as datatables).
 
 # ROADMAP
 
