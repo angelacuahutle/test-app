@@ -2,16 +2,18 @@ require 'rails_helper'
 
 RSpec.describe Teacher, type: :system do
   describe 'single page application' do
-    visit root_path # teachers#index
-    it is_expected.to have_css('#create_teacher') # add params
-    it shows an html id: table that horizontally has 3 columns
-      expect table header to contain 3 th
-    it is_expected to find('th#name')
-    it is_expected to find('th#school')
-    it is_expected to find('th#year')
-    it is_expected to find('th.blue-bg.font-white')
-    it is_expected to find('td.border-blue.gray-bg.font-white')
-    it is_expected to have 25 tds
+    before do
+      visit root_path
+    end
+
+    it { is_expected.to have_css('#create_teacher') }
+    it { is_expected.to have_css('td>th', :count => 3) }
+    it { is_expected to find('th#name') }
+    it { is_expected to find('th#school') }
+    it { is_expected to find('th#year') }
+    it { is_expected to find('th.blue-bg.font-white') }
+    it { is_expected to find('td.border-blue.gray-bg.font-white') }
+    it { is_expected to have_css('tr', :count => 25) }
     it 'has pagination' do
       expect(page).to have_css('nav#pagination')
     end
@@ -31,12 +33,12 @@ RSpec.describe Teacher, type: :system do
         find('th#sort_by', third).click # find name column
         expect('td.year').to sort_record
       end
-    end 
+    end
 
     context 'when searching' do
-      let(:sample_teacher) FactoryBot.create(:teacher, name: 'Sample Teacher')
+      let(:sample_teacher) { create(:teacher, name: 'Sample Teacher') }
       it 'has a search box for names, schools and years' do
-        within #search-box
+        within do # search-box
           fill_in :search, with: 'Sample Teacher'
           click_button 'Search'
         end

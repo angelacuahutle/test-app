@@ -26,23 +26,18 @@
 
 # ROADMAP
 
-- Install mysql
-- Add Tailwind
-- Install and setup rails rspec
-- Write Capybara test
-- Generate teacher model using scaffold
-- Write controller
-- Finishes and tailwind design 
-- Deploy 
+- [x] Install mysql
+- [x] Add Tailwind
+- [x] Install and setup rails rspec
+- [x] Write Capybara test
+- [x] Generate teacher model using scaffold
+- [x] Trobleshoot capybara test
+  No errors allowed
+  Failures allowed!
+- [ ] Write controller
+- [ ] Views
+- [ ] Finishes and tailwind design 
+- [ ] Deploy 
 
 ## TEST DRAFT
 
-Unit 
-- Model Teacher
-  validates presence 
-    name
-    school
-    year
-Controller
-  teacher#index
-  @teachers = Teachers.all

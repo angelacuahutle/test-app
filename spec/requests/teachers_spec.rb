@@ -83,49 +83,4 @@ RSpec.describe "/teachers", type: :request do
       end
     end
   end
-
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested teacher" do
-        teacher = Teacher.create! valid_attributes
-        patch teacher_url(teacher), params: { teacher: new_attributes }
-        teacher.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "redirects to the teacher" do
-        teacher = Teacher.create! valid_attributes
-        patch teacher_url(teacher), params: { teacher: new_attributes }
-        teacher.reload
-        expect(response).to redirect_to(teacher_url(teacher))
-      end
-    end
-
-    context "with invalid parameters" do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
-        teacher = Teacher.create! valid_attributes
-        patch teacher_url(teacher), params: { teacher: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
-  end
-
-  describe "DELETE /destroy" do
-    it "destroys the requested teacher" do
-      teacher = Teacher.create! valid_attributes
-      expect {
-        delete teacher_url(teacher)
-      }.to change(Teacher, :count).by(-1)
-    end
-
-    it "redirects to the teachers list" do
-      teacher = Teacher.create! valid_attributes
-      delete teacher_url(teacher)
-      expect(response).to redirect_to(teachers_url)
-    end
-  end
 end

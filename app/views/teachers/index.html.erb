@@ -2,13 +2,27 @@
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
-
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Teachers</h1>
     <%= link_to 'New teacher', new_teacher_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <h1>Teachers List</h1>
+    <table>
+      <tr>
+        <th><%= link_to "Teacher Name", :sort => "name"%> </th>
+        <th><%= link_to "School", :sort => "school"%> </th>
+        <th><%= link_to "Year", :sort => "year"%> </th>
+      </tr>
+      <% @teachers.each do |teacher| %>
+        <tr>
+          <td><%= teacher.name%></td>
+          <td><%=teacher.school %></td>
+          <td>
+            <td>  <%=teacher.year %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div id="teachers" class="min-w-full">
+      <%= render @teachers %>
+    </div>
   </div>
-
-  <div id="teachers" class="min-w-full">
-    <%= render @teachers %>
-  </div>
-</div>
