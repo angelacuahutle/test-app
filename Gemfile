@@ -59,7 +59,6 @@ group :development, :test do
   gem 'capybara', '~> 3.37', '>= 3.37.1'
   gem 'selenium-webdriver', '~> 4.2', '>= 4.2.1'
   gem 'factory_bot_rails', '~> 6.2'
-  gem 'cleanup', '~> 0.1.2'
 end
 
 group :development do
