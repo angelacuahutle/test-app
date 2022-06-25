@@ -6,7 +6,7 @@ RSpec.describe Teacher, type: :system do
       visit root_path
     end
 
-    it { is_expected.to have_css('#create_teacher') }
+    it { expect(page).to have_css('#create_teacher') }
     it { is_expected.to have_css('td>th', :count => 3) }
     it { is_expected to find('th#name') }
     it { is_expected to find('th#school') }
