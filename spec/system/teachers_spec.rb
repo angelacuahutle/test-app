@@ -7,13 +7,13 @@ RSpec.describe Teacher, type: :system do
     end
 
     it { expect(page).to have_css('#create_teacher') }
-    it { is_expected.to have_css('td>th', :count => 3) }
-    it { is_expected to find('th#name') }
-    it { is_expected to find('th#school') }
-    it { is_expected to find('th#year') }
-    it { is_expected to find('th.blue-bg.font-white') }
-    it { is_expected to find('td.border-blue.gray-bg.font-white') }
-    it { is_expected to have_css('tr', :count => 25) }
+    it { expect(page).to have_css('th', :count => 3) }
+    it { expect(page).to have_css('th#name') }
+    it { expect(page).to have_css('th#school') }
+    it { expect(page).to have_css('th#year') }
+    it { expect(page).to have_css('th.blue-bg.font-white') }
+    it { expect(page).to find('td.border-blue.gray-bg.font-white') }
+    it { expect(page).to have_css('tr', :count => 25) }
     it 'has pagination' do
       expect(page).to have_css('nav#pagination')
     end

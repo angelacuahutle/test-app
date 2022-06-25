@@ -8,9 +8,9 @@
     <h1>Teachers List</h1>
     <table>
       <tr>
-        <th><%= link_to "Teacher Name", :sort => "name"%> </th>
-        <th><%= link_to "School", :sort => "school"%> </th>
-        <th><%= link_to "Year", :sort => "year"%> </th>
+        <th id='name'><%= link_to "Teacher Name", :sort => "name"%></th>
+        <th id='school'><%= link_to "School", :sort => "school"%></th>
+        <th id='year'><%= link_to "Year", :sort => "year"%> </th>
       </tr>
       <% @teachers.each do |teacher| %>
         <tr>
