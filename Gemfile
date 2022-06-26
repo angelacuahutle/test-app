@@ -58,6 +58,7 @@ group :development, :test do
   gem 'selenium-webdriver', '~> 4.2', '>= 4.2.1'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'webdrivers'
+  gem 'faker', '~> 2.21'
 end
 
 group :development do

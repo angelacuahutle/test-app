@@ -1,0 +1,18 @@
+<table class="table-auto border border-blue-200 rounded-md mt-4 flex-col w-full">
+  <thead class='bg-blue-500 text-white'>
+    <tr class= "">
+      <th class="border border-blue-300" id='name'><%= sort_link('name', "Teacher Name")%></th>
+      <th class="border border-blue-300" id='school'><%= sort_link('school', "School")%></th>
+      <th class="border border-blue-300" id='year'><%=  sort_link('year',"School Year")%></th>
+    </tr>
+  </thead>
+  <% @teachers.each do |teacher| %>
+    <tbody>
+      <tr class= "border-collapse border border-indigo-400">
+        <td class="border border-blue-400 bg-slate-200"><%= teacher.name%></td>
+        <td class="border border-blue-400 bg-slate-200"><%=teacher.school %></td>
+        <td class="border border-blue-400 bg-slate-200"><%=teacher.year %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

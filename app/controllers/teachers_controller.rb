@@ -34,6 +34,13 @@ class TeachersController < ApplicationController
     end
   end
 
+  def list
+    @teachers = Teacher.all.order("#{params[:column]} asc")
+    # teachers = teachers.where('name ilike ?', "%#{params[:name]}%") if params[:name].present?
+    # teachers = teachers.order("#{params[:column]} #{params[:direction]}")
+    render(partial: 'teachers', locals: { teachers: @teachers })
+  end
+
   # PATCH/PUT /teachers/1 or /teachers/1.json
   def update
     respond_to do |format|
@@ -58,13 +65,14 @@ class TeachersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_teacher
-      @teacher = Teacher.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def teacher_params
-      params.require(:teacher).permit(:name, :school, :year)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_teacher
+    @teacher = Teacher.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def teacher_params
+    params.require(:teacher).permit(:name, :school, :year)
+  end
 end
