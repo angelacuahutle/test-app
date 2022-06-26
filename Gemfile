@@ -48,8 +48,6 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem 'tailwindcss-rails', '~> 2.0', '>= 2.0.10'
-
 gem 'figaro', '~> 1.2'
 
 group :development, :test do
@@ -59,6 +57,7 @@ group :development, :test do
   gem 'capybara', '~> 3.37', '>= 3.37.1'
   gem 'selenium-webdriver', '~> 4.2', '>= 4.2.1'
   gem 'factory_bot_rails', '~> 6.2'
+  gem 'webdrivers'
 end
 
 group :development do
@@ -71,3 +70,5 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
+gem "tailwindcss-rails", "~> 2.0"
