@@ -14,7 +14,5 @@
     <% end %>
   </div>
   <div class="flex-col justify-center">
-    <%= turbo_frame_tag "teachers", class: "shadow overflow-hidden rounded border-b border-gray-200" do %>
-      <%= render 'teachers', teachers: @teachers %>
-    <% end %>
+    <%= render 'teachers', teachers: @teachers %>
   </div>
