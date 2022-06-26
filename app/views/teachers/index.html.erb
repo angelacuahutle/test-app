@@ -1,28 +1,28 @@
-<div class="w-full">
+<div class="flex-col justify-center">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Teachers</h1>
-    <%= link_to 'New teacher', new_teacher_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium", id:'create_teacher' %>
-    <h1>Teachers List</h1>
-    <table>
-      <tr>
-        <th id='name'><%= link_to "Teacher Name", :sort => "name"%></th>
-        <th id='school'><%= link_to "School", :sort => "school"%></th>
-        <th id='year'><%= link_to "Year", :sort => "year"%> </th>
-      </tr>
+  <div class="flex-col">
+    <h1 class="font-bold text-3xl mb-4">Find or Add a Teacher</h1>
+    <%= link_to 'Add a Teacher', new_teacher_path, class: "rounded-lg w-48 py-3 px-5 bg-blue-600 text-white block font-medium", id:'create_teacher' %>
+  </div>
+  <div class="flex-col justify-center">
+    <table class="table-auto border border-blue-200 rounded-md mt-4 flex-col w-full">
+      <thead class='bg-blue-500 text-white'>
+        <tr class= "">
+          <th id='name'><%= link_to "Teacher Name", :sort => "name", class:"border border-blue-300" %></th>
+          <th id='school'><%= link_to "School", :sort => "school", class:"border-blue-300"%></th>
+          <th id='year'><%= link_to "School Year", :sort => "year" , class:"border-blue-300"%> </th>
+        </tr>
+      </thead>
       <% @teachers.each do |teacher| %>
-        <tr>
-          <td><%= teacher.name%></td>
-          <td><%=teacher.school %></td>
-          <td>
-            <td>  <%=teacher.year %></td>
+        <tbody>
+          <tr class= "border-collapse border border-indigo-400">
+            <td class="border border-blue-400 bg-slate-200"><%= teacher.name%></td>
+            <td class="border border-blue-400 bg-slate-200"><%=teacher.school %></td>
+            <td class="border border-blue-400 bg-slate-200"><%=teacher.year %></td>
           </tr>
         <% end %>
-      </table>
-    </div>
-    <div id="teachers" class="min-w-full">
-      <%= render @teachers %>
-    </div>
+      </tbody>
+    </table>
   </div>

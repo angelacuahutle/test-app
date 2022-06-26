@@ -11,8 +11,9 @@ RSpec.describe Teacher, type: :system do
     it { expect(page).to have_css('th#name') }
     it { expect(page).to have_css('th#school') }
     it { expect(page).to have_css('th#year') }
-    it { expect(page).to have_css('th.bg-{blue}.text-white-400') }
-    it { expect(page).to find('td.border-blue.gray-bg.font-white') }
+    it { expect(page).to have_css('th.border border-blue-300') }
+    it { expect(page).to have_css('thead.bg-blue-500 text-white') }
+    it { expect(page).to find('td.border border-blue-400 bg-slate-200') }
     it { expect(page).to have_css('tr', :count => 25) }
     it 'has pagination' do
       expect(page).to have_css('nav#pagination')
