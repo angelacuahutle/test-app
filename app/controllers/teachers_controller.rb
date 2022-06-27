@@ -35,11 +35,12 @@ class TeachersController < ApplicationController
   end
 
   def list
-    teachers = Teacher.all.order("#{params[:column]} asc")
+    teachers = Teacher.all.order("#{params[:column]} #{params[:direction]}")
     # teachers = teachers.where('name ilike ?', "%#{params[:name]}%") if params[:name].present?
     # teachers = teachers.order("#{params[:column]} #{params[:direction]}")
     render(partial: 'teachers', locals: { teachers: teachers })
   end
+
 
   # PATCH/PUT /teachers/1 or /teachers/1.json
   def update
