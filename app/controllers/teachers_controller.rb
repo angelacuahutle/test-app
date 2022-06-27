@@ -1,9 +1,10 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: %i[ show edit update destroy ]
+  include Filterable
 
   # GET /teachers or /teachers.json
   def index
-    @teachers = Teacher.all
+    @teachers = filter!(Teacher)
   end
 
   # GET /teachers/1 or /teachers/1.json
@@ -35,12 +36,9 @@ class TeachersController < ApplicationController
   end
 
   def list
-    teachers = Teacher.all.order("#{params[:column]} #{params[:direction]}")
-    # teachers = teachers.where('name ilike ?', "%#{params[:name]}%") if params[:name].present?
-    # teachers = teachers.order("#{params[:column]} #{params[:direction]}")
+    teachers = filter!(Teacher)
     render(partial: 'teachers', locals: { teachers: teachers })
   end
-
 
   # PATCH/PUT /teachers/1 or /teachers/1.json
   def update

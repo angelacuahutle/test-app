@@ -8,9 +8,9 @@ RSpec.describe Teacher, type: :system do
 
     it { expect(page).to have_css('#create_teacher') }
     it { expect(page).to have_css('th', :count => 3) }
-    it { expect(page).to have_css('th#name') }
-    it { expect(page).to have_css('th#school') }
-    it { expect(page).to have_css('th#year') }
+    it { expect(page).to have_css('th#teachers-name') }
+    it { expect(page).to have_css('th#teachers-school') }
+    it { expect(page).to have_css('th#teachers-year') }
     it { expect(page).to have_xpath(
       "//thead[contains(@class, 'bg-blue-500') and contains(@class, 'text-white')]"
     )}
@@ -29,7 +29,7 @@ RSpec.describe Teacher, type: :system do
       end
 
       it 'sorts strings' do
-        find('th#sort_by', first).click # find name column
+        find('th#sort_by_name', first).click # find name column
         expect('td.name').to sort_record
       end
 
