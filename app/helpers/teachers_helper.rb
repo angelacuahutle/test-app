@@ -1,10 +1,9 @@
 # frozen_string_literal: true
-
 # Hotwire helpers for teachers resource
 module TeachersHelper
   def sort_link(column, label)
     if column == params[:column]
-      link_to(label, list_teachers_path(column: column))
+      link_to(label, list_teachers_path(column: column, direction: next_direction))
     else
       link_to(label, list_teachers_path(column: column, direction: 'asc'))
     end
@@ -13,7 +12,7 @@ module TeachersHelper
   def next_direction
     params[:direction] == 'asc' ? 'desc' : 'asc'
   end
-  
+
   def sort_indicator
     tag.span(class: "sort sort-#{params[:direction]}")
   end

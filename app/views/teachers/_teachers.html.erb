@@ -2,19 +2,19 @@
   <table class="table-auto border border-blue-200 rounded-md mt-4 flex-col w-full">
     <thead class='bg-blue-500 text-white'>
       <tr class= "">
-        <th class="border border-blue-300" id='teachers-name'>
+        <th class="border border-blue-300 hover:cursor-pointer relative" id='teachers-name'>
+          <%= sort_indicator if params[:column] == "name" %>
           <%= sort_link('name', "Teacher Name")%>
-          <%= sort_indicator if params[:column] == "teacher name" %>
         </th>
         
-        <th class="border border-blue-300" id='teachers-school'>
+        <th class="border border-blue-300 hover:cursor-pointer relative" id='teachers-school'>
+          <%= sort_indicator if params[:column] == "school" %>
           <%= sort_link('school',"School")%>
-          <%= sort_indicator if params[:column] == "shool" %>
         </th>
        
-        <th class="border border-blue-300" id='teachers-year'>
-          <%= sort_link('year',"School Year")%>
+        <th class="border border-blue-300 hover:cursor-pointer relative" id='teachers-year'>
            <%= sort_indicator if params[:column] == "year" %>
+           <%= sort_link('year',"School Year")%>
         </th>
      
       </tr>
