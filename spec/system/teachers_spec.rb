@@ -37,13 +37,11 @@ RSpec.describe Teacher, type: :system do
     end
 
     context 'when searching' do
-      let(:sample_teacher) { create(:teacher, name: 'Sample Teacher') }
+      let!(:sample_teacher) { create(:teacher, name: 'Sample Teacher') }
+
       it 'has a search box for teachers names' do
-        within do ('input#name')
-          fill_in :search, with: 'Sample Teacher'
-          click_button 'Search'
-        end
-        expect(page).to have_css('.query-result')
+        find('input#search-bar').set('Sample Teacher').send_keys(:return)
+        expect(page).to find('tr.border')
       end
     end
   end
