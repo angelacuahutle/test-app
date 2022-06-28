@@ -46,7 +46,7 @@
       <% end %>
     </tbody>
   </table>
-  <%= turbo_frame_tag "teachers", class: "min-w-full" do %>
+  <div class="min-w-full">
     <%= render "pager", pagy: @pagy %>
-  <% end %>
+  </div>
 <% end %>
