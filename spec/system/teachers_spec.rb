@@ -25,19 +25,14 @@ RSpec.describe Teacher, type: :system do
     end
 
     context "when using table rows" do
-      it "has second page" do
+      it "has a second page" do
         visit root_path
-        expect(page).to have_xpath("//*[@class='pagination']//a[text()='2']")
+        expect(page).to have_xpath('//*[@id="pager"]/div[2]/a')
       end
 
       it 'sorts strings' do
-        find('th#sort_by_name', first).click # find name column
-        expect('td.name').to sort_record
-      end
-
-      it 'sorts datetime' do
-        find('th#sort_by', third).click # find name column
-        expect('td.year').to sort_record
+        click_link('Name')
+        expect(page).to have_xpath('//*[@id="teachers-name"]/span')
       end
     end
 
