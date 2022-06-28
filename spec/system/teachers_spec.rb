@@ -21,7 +21,7 @@ RSpec.describe Teacher, type: :system do
     )}
     it { expect(find_all('tr.border').size).to eq(25) }
     it 'has pagination' do
-      expect(page).to have_css('nav#pagination')
+      expect(page).to have_link('Next page >')
     end
 
     context "when using table rows" do
@@ -41,7 +41,7 @@ RSpec.describe Teacher, type: :system do
 
       it 'has a search box for teachers names' do
         find('input#search-bar').set('Sample Teacher').send_keys(:return)
-        expect(page).to find('tr.border')
+        expect(page).to have_css('tr.border')
       end
     end
   end
