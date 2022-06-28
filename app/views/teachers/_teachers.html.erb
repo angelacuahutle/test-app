@@ -17,6 +17,7 @@
     %>
   <% end %>
 </div>
+
 <%= turbo_frame_tag "teachers", class: "shadow overflow-hidden rounded border-b border-gray-200" do %>
   <table class="table-auto border border-blue-200 rounded-md mt-4 flex-col w-full">
     <thead class='bg-blue-500 text-white'>
@@ -45,4 +46,7 @@
       <% end %>
     </tbody>
   </table>
+  <%= turbo_frame_tag "teachers", class: "min-w-full" do %>
+    <%= render "pager", pagy: @pagy %>
+  <% end %>
 <% end %>
