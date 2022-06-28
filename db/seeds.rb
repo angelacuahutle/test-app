@@ -8,5 +8,5 @@
 require 'faker'
 
 100.times do
-  Teacher.create(name: Faker::Name.name, school: Faker::University.name, year: rand(1910..2022))
+  FactoryBot.create(:teacher)
 end

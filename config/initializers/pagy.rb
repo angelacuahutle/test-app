@@ -1,2 +1,2 @@
-### config/initializers/pagy.rb
+# config/initializers/pagy.rb
 require 'pagy/extras/countless'
