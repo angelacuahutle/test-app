@@ -4,6 +4,7 @@ class TeachersController < ApplicationController
 
   # GET /teachers or /teachers.json
   def index
+    @pagy, @teachers_page = pagy(Teacher.all, items: 10)
     @teachers = filter!(Teacher)
   end
 
