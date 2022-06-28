@@ -39,7 +39,7 @@ RSpec.describe Teacher, type: :system do
     context 'when searching' do
       let(:sample_teacher) { create(:teacher, name: 'Sample Teacher') }
       it 'has a search box for teachers names' do
-        within do # search-box
+        within do ('input#name')
           fill_in :search, with: 'Sample Teacher'
           click_button 'Search'
         end
