@@ -1,13 +1,6 @@
 <div class="flex justify-end mb-4">
   <%= form_with url: list_teachers_path, method: :get, data: { controller: "search-form", search_form_target: "form", turbo_frame: "teachers" } do |form| %>
-    <%= form.select 'Teachers',
-      options_for_select(Teacher.all.pluck(:name, :id), session.dig('teachers_filters', 'id')),
-      { include_blank: 'All Teachers' },
-      class: "border-blue-500 rounded",
-      data: {
-        action: "change->search-form#search"
-      }
-    %>
+
     <%= form.text_field :name,
       placeholder: "Search by name",
       value: session.dig('teacher_filters', 'name'),
