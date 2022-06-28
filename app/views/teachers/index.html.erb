@@ -8,10 +8,10 @@
   </div>
 
   <div class="flex-col justify-center">
-    <%= render 'teachers', teachers: @teachers %>
   </div>
 
-<%= turbo_frame_tag "teachers", class: "min-w-full", autoscroll: "true" do %>
+  <%= turbo_frame_tag "teachers", class: "min-w-full" do %>
+    <%= render 'teachers', teachers: @teachers %>
     <%= render "pager", pagy: @pagy %>
   <% end %>
 </div>

@@ -4,8 +4,7 @@ class TeachersController < ApplicationController
 
   # GET /teachers or /teachers.json
   def index
-    @pagy, @teachers_page = pagy(Teacher.all, items: 10)
-    @teachers = filter!(Teacher)
+    @pagy, @teachers = pagy(filter!(Teacher), items: 25)
   end
 
   # GET /teachers/1 or /teachers/1.json
@@ -37,8 +36,9 @@ class TeachersController < ApplicationController
   end
 
   def list
-    teachers = filter!(Teacher)
-    render(partial: 'teachers', locals: { teachers: teachers })
+    @pagy, @teachers = pagy(filter!(Teacher), items: 25)
+
+    render(partial: 'teachers', locals: { teachers: @teachers })
   end
 
   # PATCH/PUT /teachers/1 or /teachers/1.json
