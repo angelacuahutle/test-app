@@ -1,0 +1,46 @@
+<div class="flex justify-end mb-4">
+  <%= form_with url: list_teachers_path, method: :get, data: { controller: "search-form", search_form_target: "form", turbo_frame: "teachers" } do |form| %>
+
+    <%= form.text_field :name,
+      placeholder: "Search by name",
+      value: session.dig('teacher_filters', 'name'),
+      class: "border border-blue-500 rounded p-2",
+      autocomplete: "off",
+      id: 'search-bar',
+      data: { action: "input->search-form#search" }
+    %>
+  <% end %>
+</div>
+
+<%= turbo_frame_tag "teachers", class: "shadow overflow-hidden rounded border-b border-gray-200" do %>
+  <table class="table-auto border border-blue-200 rounded-md mt-4 flex-col w-full">
+    <thead class='bg-blue-500 text-white'>
+      <tr class= "">
+        <th id="teachers-name" class="border border-blue-300 text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+          <%= sort_indicator if session.dig('teacher_filters', 'column') == "name" %>
+          <%= build_order_link(column: "name", label: "Name") %>
+        </th>
+        <th id='teachers-school'class="border border-blue-300 text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+          <%= sort_indicator if session.dig('teacher_filters', 'column') == "school" %>
+          <%= build_order_link(column: "school", label: "School") %>
+        </th>
+        <th id='teachers-year' class="border border-blue-300 text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+          <%= sort_indicator if session.dig('teacher_filters', 'column') == "year" %>
+          <%= build_order_link(column: "year", label: "Year") %>
+        </th>
+      </tr>
+    </thead>
+    <% @teachers.each do |teacher| %>
+      <tbody>
+        <tr class= "border-collapse border border-indigo-400">
+          <td class="border border-blue-400 bg-slate-200"><%= teacher.name%></td>
+          <td class="border border-blue-400 bg-slate-200"><%=teacher.school %></td>
+          <td class="border border-blue-400 bg-slate-200"><%=teacher.year&.year %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="min-w-full">
+    <%= render "pager", pagy: @pagy %>
+  </div>
+<% end %>

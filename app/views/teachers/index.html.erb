@@ -1,0 +1,13 @@
+<div class="flex-col justify-center">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+  <div class="flex-col">
+    <h1 class="font-bold text-3xl mb-4">Find or Add a Teacher</h1>
+    <%= link_to 'Add a Teacher', new_teacher_path, class: "rounded-lg w-48 py-3 px-5 bg-blue-600 text-white block font-medium", id:'create_teacher' %>
+  </div>
+
+  <div class="flex-col justify-center">
+    <%= render 'teachers', teachers: @teachers %>
+  </div>
+</div>
