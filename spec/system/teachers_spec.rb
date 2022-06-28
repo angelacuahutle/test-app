@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Teacher, type: :system do
-  describe 'single page application' do
+  describe 'single page application', js: true do
+    let!(:teachers) { create_list(:teacher, 100) }
+
     before do
       visit root_path
     end
@@ -17,7 +19,7 @@ RSpec.describe Teacher, type: :system do
     it { expect(page).to have_xpath(
       "//td[contains(@class, 'border border-blue-400') and contains(@class, 'bg-slate-200')]"
     )}
-    it { expect(page).to have_css('tr', :count => 25) }
+    it { expect(find_all('tr.border').size).to eq(25) }
     it 'has pagination' do
       expect(page).to have_css('nav#pagination')
     end
@@ -41,7 +43,7 @@ RSpec.describe Teacher, type: :system do
 
     context 'when searching' do
       let(:sample_teacher) { create(:teacher, name: 'Sample Teacher') }
-      it 'has a search box for names, schools and years' do
+      it 'has a search box for teachers names' do
         within do # search-box
           fill_in :search, with: 'Sample Teacher'
           click_button 'Search'
