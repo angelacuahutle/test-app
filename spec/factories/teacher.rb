@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :teacher do
-    year { rand(1910..2022) }
-    sequence(:name) { |n| "Teacher #{n}" }
-    sequence(:school) { |n| "School #{n}" }
+    year { rand((Time.now - 50.years)..Time.now) }
+    name { Faker::Name.name }
+    school { Faker::University.name }
   end
 end
