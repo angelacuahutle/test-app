@@ -1,5 +1,5 @@
 # README
-## The excersise consist on creating a single page application displaying a table of Teachers, their school and year they worked at the school 
+## The goal of this excersise is to create a single page application displaying a table for Teachers, their school and year they worked at the school 
 
 ![./app-shoot.png]
 
