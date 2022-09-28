@@ -1,9 +1,10 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, only: %i[ show edit update destroy ]
+  include Filterable
 
   # GET /teachers or /teachers.json
   def index
-    @teachers = Teacher.all
+    @pagy, @teachers = pagy(filter!(Teacher), items: 25)
   end
 
   # GET /teachers/1 or /teachers/1.json
@@ -34,6 +35,12 @@ class TeachersController < ApplicationController
     end
   end
 
+  def list
+    @pagy, @teachers = pagy(filter!(Teacher), items: 25)
+
+    render(partial: 'teachers', locals: { teachers: @teachers })
+  end
+
   # PATCH/PUT /teachers/1 or /teachers/1.json
   def update
     respond_to do |format|
@@ -58,13 +65,14 @@ class TeachersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_teacher
-      @teacher = Teacher.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def teacher_params
-      params.require(:teacher).permit(:name, :school, :year)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_teacher
+    @teacher = Teacher.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def teacher_params
+    params.require(:teacher).permit(:name, :school, :year)
+  end
 end

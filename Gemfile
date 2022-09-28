@@ -47,7 +47,7 @@ gem "bootsnap", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
-
+gem 'pagy'
 gem 'figaro', '~> 1.2'
 
 group :development, :test do
@@ -58,6 +58,7 @@ group :development, :test do
   gem 'selenium-webdriver', '~> 4.2', '>= 4.2.1'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'webdrivers'
+  gem 'faker', '~> 2.21'
 end
 
 group :development do
