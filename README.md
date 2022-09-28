@@ -22,6 +22,11 @@ To run tests,
 rspec
 ```
 
+Please add an
+```ENV
+``` 
+variable to configuration file in order to access successfully to the database
+
 # ROADMAP
 
 * Install mysql
