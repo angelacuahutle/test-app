@@ -10,7 +10,7 @@ gem "rails", "~> 7.0.3"
 gem "sprockets-rails"
 
 # Use mysql as the database for Active Record
-gem "mysql2", "~> 0.5"
+gem 'mysql2', '~> 0.5.4'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -47,10 +47,18 @@ gem "bootsnap", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+gem 'pagy'
+gem 'figaro', '~> 1.2'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
+  gem 'capybara', '~> 3.37', '>= 3.37.1'
+  gem 'selenium-webdriver', '~> 4.2', '>= 4.2.1'
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'webdrivers'
+  gem 'faker', '~> 2.21'
 end
 
 group :development do
@@ -64,3 +72,4 @@ group :development do
   # gem "spring"
 end
 
+gem "tailwindcss-rails", "~> 2.0"
